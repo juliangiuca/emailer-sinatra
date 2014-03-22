@@ -1,13 +1,12 @@
 class CreateCampaigns < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :campaigns do |t|
       t.string :name
       t.timestamps
     end
-
   end
 
-  def self.down
+  def down
     drop_table :campaigns
   end
 end

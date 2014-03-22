@@ -4,16 +4,36 @@
     "username": "julian",
     "password": "pewpew"
   },
+  "redis": {
+    "defaults": {
+      "port": 6379,
+      "host": "localhost",
+      "user": "local"
+    },
+    "development": {},
+    "test": {}
+  },
   "database": {
-    "host": "localhost",
-    "username": "local",
-    "password": "",
-    "database": "emailer_development"
+    "defaults": {
+      "adapter":  "postgresql",
+      "encoding": "utf8"
+    },
+    "development": {
+      "host": "localhost",
+      "username": "local",
+      "password": "",
+      "database": "emailer_development"
+    },
+    "test": {
+      "host": "localhost",
+      "username": "local",
+      "password": "",
+      "database": "emailer_test"
+    }
   },
   "email": {
     "username": "emailer@eggandjam.com",
-    "password": "",
+    "password": "Z73HANXYdBiXdU",
     "domain": "eggandjam.com"
   }
 }
-

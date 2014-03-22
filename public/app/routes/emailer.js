@@ -12,9 +12,27 @@ emailer.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'ngView/users/index',
       controller: 'UserCtrl'
     }).
-    //when('/campaigns/new', {
-    //}).
+    when('/emails/new', {
+      templateUrl: 'ngView/emails/new',
+      controller: 'EmailsNewCtrl'
+    }).
+    when('/emails/:emailId', {
+      templateUrl: 'ngView/emails/show',
+      controller: 'EmailsShowCtrl'
+    }).
+    when('/groups', {
+      templateUrl: 'ngView/groups/index',
+      controller: 'GroupsIndexCtrl'
+    }).
+    when('/groups/new', {
+      templateUrl: 'ngView/groups/new',
+      controller: 'GroupsShowCtrl'
+    }).
+    when('/groups/:groupId', {
+      templateUrl: 'ngView/groups/show',
+      controller: 'GroupsShowCtrl'
+    }).
     otherwise({
-      redirectTo: '/campaigns'
+      redirectTo: '/emails/new'
     });
 }])

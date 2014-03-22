@@ -1,5 +1,5 @@
 class CreateTrackingPixels < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :tracking_pixels do |t|
       t.string :tracking
       t.integer :user_id
@@ -9,7 +9,7 @@ class CreateTrackingPixels < ActiveRecord::Migration
 
   end
 
-  def self.down
+  def down
     drop_table :tracking_pixels
   end
 end

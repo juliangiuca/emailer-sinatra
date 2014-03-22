@@ -1,4 +1,5 @@
 require 'json'
+require 'active_support/core_ext/hash/indifferent_access'
 
 module Settings
   extend self
@@ -25,12 +26,14 @@ module Settings
     @json_obj ||= JsonObj.new(config)
   end
 
-  class JsonObj
-    def initialize(json_hash)
+  class JsonObj < Hash
 
+    def initialize(json_hash)
       @json = {}
+      defaults = {}
       json_hash.each_pair do |key, value|
-        @json[key] = value.is_a?(Hash) ? JsonObj.new(value) : value
+        defaults = value if key == "defaults"
+        @json[key] = value.is_a?(Hash) ? JsonObj.new(defaults.merge(value)) : value
 
         define_singleton_method(key) do
           @json[key]
@@ -39,7 +42,7 @@ module Settings
     end
 
     def [](key)
-      @json[key]
+      @json[key].is_a?(Hash) ? @json[key].to_hash : @json[key]
     end
 
     def inspect
@@ -47,12 +50,21 @@ module Settings
     end
 
     def to_hash
-      @json
+      @json.with_indifferent_access
     end
 
     def keys
       @json.keys
     end
 
+    def fetch(key)
+      self[key]
+    end
+
+    def values_at(*args)
+      args.map  do |arg|
+        self[arg]
+      end
+    end
   end
 end
