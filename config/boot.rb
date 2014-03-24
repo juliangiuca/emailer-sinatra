@@ -1,5 +1,4 @@
 require "rubygems"
-require 'byebug'
 
 RACK_ENV ||= ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
 RACK_ROOT ||= File.expand_path(File.dirname(__FILE__) + '/..')
