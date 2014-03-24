@@ -15,7 +15,7 @@ gem 'foreman'
 gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 gem 'capistrano'
 gem 'capistrano-bundler'
-gem 'capistrano-rvm'
+gem 'capistrano-rbenv'
 gem 'capistrano-rails'
 gem 'newrelic_rpm'
 gem 'factory_girl'

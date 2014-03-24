@@ -1,11 +1,11 @@
-#!/bin/bash 
+#!/bin/bash
 function remove_pid_file {
   rm /data/emailer/shared/tmp/pids/unicorn.pid
 }
 
 function start_unicorn {
   echo "starting unicorn"
-  bundle exec unicorn -c /data/emailer/current/config/unicorn_config.rb -E production >> /data/emailer/shared/logs/unicorn.log 2>&1
+  /home/emailer/.rbenv/bin/rbenv exec bundle exec unicorn -c /data/emailer/current/config/unicorn_config.rb -E production >> /data/emailer/shared/logs/unicorn.log 2>&1
 }
 
 while true; do
